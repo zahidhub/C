@@ -1,8 +1,3 @@
-// (C) Mohamed Taha Jasser, Nadman Faisal, Zahid Hasan, group: 6 (2025)
-// Work package 2
-// Exercise 1
-// Submission code: 021106 (provided by your TA-s)
-
 #include <stdio.h> // header file
 #include <string.h>
 #include <stdbool.h>
