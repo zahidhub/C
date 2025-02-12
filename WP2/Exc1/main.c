@@ -1,33 +1,14 @@
-/*Implement a control program for a robot. The program asks for the robot's starting position (x, y coordinates,
-ranging between 0-99) and for a string of characters 'm' and 't', where m stands for move one step in current
-direction and t for turn of direction as below.
-
-move: means that the robot takes one step in the current direction.
-turn: means that the robot turns 90 degrees clockwise.
-
-The start direction is always north for the robot.
-The program performs instructions from strings provided by the user, one by one. When all instructions have
-been executed the robot stops and the program prints out the new position of the robot. The program then asks
-for new starting position and the string of characters. The process repeats until the program encounters a
-dedicated end character (you can define it).
-
-Implement the functions move() and turn() as two void functions and use a pointer parameters as arguments so
-that the function can update the robot position which is a variable in the main function (calling function).
-Use enum and a record of type ROBOT as below for the robot’s position and direction.
-
-enum DIRECTION {N,O,S,W};
-typedef struct {
-int xpos;
-int ypos;
-enum DIRECTION dir;
-} ROBOT;
-*/
+// (C) Mohamed Taha Jasser, Nadman Faisal, Zahid Hasan, group: 6 (2025)
+// Work package 2
+// Exercise 1
+// Submission code: 021106 (provided by your TA-s)
 
 #include <stdio.h> // header file
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 
-#define MAX 21 // defing max value for string (max 20 command at once)
+#define MAX 100 // defing max value for string (max 100 command at once)
 
 // this method clears buffer after user input
 void clearBuffer (void) {
@@ -135,7 +116,7 @@ while (progRuning) {
 
         // the loop runs till user input is out of bound. Once the user input is
         // within the max and mix x-coordinate, it stores the the userinput
-        while ((xCordinate < MIN_CORDINATE) || (xCordinate > MAX_CORDINATE)) {
+        while (((xCordinate < MIN_CORDINATE) || (xCordinate > MAX_CORDINATE)) || !isalpha(xCordinate)) {
 
             printf("Invalid X cordinate. Enter robot starting X cordinate (0-99): \n");
             scanf("%d", &xCordinate); // stores valid user input for x coordinate
@@ -149,7 +130,7 @@ while (progRuning) {
 
         // the loop runs till user input is out of bound. Once the user input is
         // within the max and mix y-coordinate, it stores the the userinput
-        while ((yCordinate < MIN_CORDINATE) || (yCordinate > MAX_CORDINATE) ) {
+        while (((yCordinate < MIN_CORDINATE) || (yCordinate > MAX_CORDINATE) || !isalpha(yCordinate)) ) {
 
             printf("Invalid Y cordinate. Enter robot starting Y cordinate (0-99): \n");
             scanf("%d", &yCordinate); // stores valid user input for y coordinate
@@ -199,6 +180,13 @@ while (progRuning) {
        
         
     }
+
+    if (xCordinate > 100 || yCordinate > 100) // check  if the X or Y coordnate is out of bound
+    {
+        printf("OUT OF BOUND COORDINATE\n"); // printline for error behaviour
+        return 0; // retun value
+    }
+    
     printf("\n"); // print line for spacing
     printf("######-ROBOT_LOCATION-######\n"); // header formating for output
     printDirection(currentDirection); // prints the direction the robot is facing
