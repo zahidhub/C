@@ -41,7 +41,7 @@ and the output should be
 int main(int argc, char *argv[]) {
 
     if (argc != 6) { // check if there are 6 arguments
-        printf("invalid! Invalid number of arguments\n"); // print line for user
+        printf("invalid number of arguments\n"); // print line for user
         return 0; // retun if not enuogh arguemtns
     }
 
@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
         printf("invalid! floor_pos must be between 0 and 7.\n");  // print error for floor_pos
         return 0; // return if invalid value
     }
-    if (door_pos > 3) { // check if the the door_pos has valid value
-        printf("invalid! door_pos must be between 0 and 3.\n");  // print error for door_pos
+    if (door_pos > 2) { // check if the the door_pos has valid value
+        printf("invalid! door_pos must be between 1 or 2.\n");  // print error for door_pos
         return 0; // return if invalid value
     }
     if (brake1 > 1) { // check if the the brake1 has valid value
