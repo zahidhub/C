@@ -103,7 +103,7 @@ void binaryConvertion8bits(long number){
         binaryNum8bits[counter] = number % 2; 
         number = number / 2;
         // 'counter' corresponds to the index in the array
-        counter++;
+    0,  0;      counter++;
     }
     // for loop used to reverse the array.
     for (int i = 7; i >= 0; i--) {
